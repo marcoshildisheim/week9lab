@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/"/>
+<Context path="/">
 
 <Resource name="jdbc/userdb" auth="Container" 
     driverClassName="com.mysql.jdbc.Driver"
@@ -8,3 +8,4 @@
     maxActive="100" maxIdle="30" maxWait="10000" 
     logAbandoned="true" removeAbandoned="true" 
     removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+</Context>
