@@ -1,10 +1,153 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Oct 29, 2020, 11:07:23 AM
     Author     : 820203
 */
 
+body 
+{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: black;
+  opacity: 1;  
+}
+
+.header 
+{
+  text-align: center;
+  background: #4C7563;
+  width: 80%;
+  margin: auto;
+  opacity: 0.9;
+  border-radius: 15px;
+}
+
+.header h1 {
+  font-size: 85px;
+  color: white;
+  font-family: 'IBM Plex Serif', serif;
+  background-position: 98%;
+  background-size: 70px;
+  background-repeat: no-repeat;
+} 
+
+.column{
+  float: left;
+  margin-top: 1%;
+  margin-left: 10%;
+  margin-bottom: 5%; 
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  width: 80%;
+  background-color: #4C7563;
+  color: white;
+  opacity: 1;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'IBM Plex Serif', serif;
+}
+
+.img 
+{
+  display: block;	
+  max-width: 95%;
+  height: auto;
+  margin: auto; 
+}
+
+.card 
+{
+  background-color: #4C7563;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 15px;
+  opacity: 1;
+}
+
+.row:after 
+{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html 
+{
+  scroll-behavior: smooth;
+}
+
+body {margin:0;}
+
+input[type=text],[type=tel],[type=date],[type=email],[type=number], select, textarea
+{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+label 
+{
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] 
+{
+  background-color: #4C7563;
+  color: black;
+  padding: 8px 150px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+  float: left;
+  font-family: 'IBM Plex Serif', serif; 
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.container 
+{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-30 
+{
+  float: left;
+  width: 30%;
+  margin-top: 6px;
+  margin-left: 35px;
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: bold; 
+  font-size: 18px;
+  color: white;
+}
+
+.row:after 
+{
+  content: "";
+  display: table;
+  clear: both;
+} 
+
+@media screen and (max-width: 800px) 
+{
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 200px) 
+{
+  .topnav a, .header, .leftcolumn, .rightcolumn 
+  {
+    float: none;
+    width: 100%;
+  }
+}
