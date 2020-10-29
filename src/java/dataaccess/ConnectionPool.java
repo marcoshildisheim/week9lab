@@ -10,5 +10,9 @@ package dataaccess;
  * @author 775653
  */
 public class ConnectionPool {
+
+    static ConnectionPool getInstance() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
