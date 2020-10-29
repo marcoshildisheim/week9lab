@@ -16,28 +16,24 @@ import java.util.ArrayList;
  */
 public class RoleDB {
     
-    public ArrayList<User> getAll(String intake) throws Exception {
+    public ArrayList<Role> getAll(String id) throws Exception {
         
-    ArrayList<User> users = new ArrayList<>();
+    ArrayList<Role> roles = new ArrayList<>();
     ConnectionPool connectionPool = ConnectionPool.getInstance();
     Connection connection = connectionPool.getConnection();
     PreparedStatement statement = null;
     ResultSet result = null;
-    String sql = "SELECT * FROM user WHERE email=?";
+    String sql = "SELECT * FROM user WHERE role_id=?";
     
     try {
         statement = connection.prepareStatement(sql);
-        statement.setString(1, sql);
+        statement.setString(1, id);
         result = statement.executeQuery();
         while(result.next()){
-           String email = result.getString(1);
-           int active = result.getInt(2);
-           String firstName = result.getString(3);
-           String lastName = result.getString(4);
-           String password = result.getString(5);
-           int role = result.getInt(6);
-           User user = new User(email, active, firstName, lastName, password, role);
-           user.add(user);
+           int roleID = result.getInt(1);
+           String roleName = result.getString(2);
+           Role role = new Role(roleID, roleName);
+           roles.add(role);
         }
     } finally {
         DBUtil.closeResultSet(result);
@@ -45,7 +41,7 @@ public class RoleDB {
         connectionPool.freeConnection(connection);
     }
     
-    return users;
+    return roles;
   
-    
+    }
 }
