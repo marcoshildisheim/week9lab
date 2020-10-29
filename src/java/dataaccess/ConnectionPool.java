@@ -15,11 +15,7 @@ import javax.sql.DataSource;
  * @author 775653
  */
 public class ConnectionPool {
-
-    static ConnectionPool getInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+  
     private static ConnectionPool pool = null;
     private static DataSource dataSource = null;
     

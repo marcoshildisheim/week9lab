@@ -41,7 +41,7 @@ public class RoleDB {
         }
     } finally {
         DBUtil.closeResultSet(result);
-        DBUtil.closePreparedStatment(statement);
+        DBUtil.closePreparedStatement(statement);
         connectionPool.freeConnection(connection);
     }
     
