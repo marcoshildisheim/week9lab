@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import models.User;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class UserDB {
     
-    public ArrayList<User> getAll(String intake) throws Exception {
+    public ArrayList<User> getAll(String intakeEmail) throws Exception {
         
     ArrayList<User> users = new ArrayList<>();
     ConnectionPool connectionPool = ConnectionPool.getInstance();
@@ -27,7 +28,7 @@ public class UserDB {
     
     try {
         statement = connection.prepareStatement(sql);
-        statement.setString(1, intake);
+        statement.setString(1, intakeEmail);
         result = statement.executeQuery();
         while(result.next()){
            String email = result.getString(1);
@@ -37,7 +38,7 @@ public class UserDB {
            String password = result.getString(5);
            int role = result.getInt(6);
            User user = new User(email, active, firstName, lastName, password, role);
-           user.add(user);
+           users.add(user);
         }
     } finally {
         DBUtil.closeResultSet(result);
@@ -50,54 +51,61 @@ public class UserDB {
     }
 
     public void insert(User user) throws Exception {
-        ConnectionPool cp = ConnectionPool.getInstance();
-        Connection connection = cp.getConnection();
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
         PreparedStatement statement = null;
         String sql = "INSERT INTO user (email, active, first_name, last_name, password, role) VALUES (?, ?, ?, ?, ?, ?)";
         
         try {
             statement = connection.prepareStatement(sql);
-            statement.setString(1, note.getTitle());
-            statement.setString(2, note.getContents());
-            statement.setString(3, note.getOwner());
+            statement.setString(1, user.getEmail());
+            statement.setInt(2, user.getActive());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setString(5, user.getPassword());
+            statement.setInt(6, user.getRole());
             statement.executeUpdate();
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            cp.freeConnection(con);
+            DBUtil.closePreparedStatement(statement);
+            pool.freeConnection(connection);
         }
     }
 
-    public void update(Note note) throws Exception {
-        ConnectionPool cp = ConnectionPool.getInstance();
-        Connection con = cp.getConnection();
-        PreparedStatement ps = null;
-        String sql = "UPDATE note SET title=?, contents=? WHERE note_id=?";
+    public void update(User user) throws Exception {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement statement = null;
+        String sql = "UPDATE user SET email=?, active=?, first_name=?, last_name=?, password=?, role=? WHERE email=?";
         
         try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, note.getTitle());
-            ps.setString(2, note.getContents());
-            ps.setInt(3, note.getNoteId());
-            ps.executeUpdate();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getEmail());
+            statement.setInt(2, user.getActive());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setString(5, user.getPassword());
+            statement.setInt(6, user.getRole());
+            statement.setString(7, user.getEmail());
+            statement.executeUpdate();
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            cp.freeConnection(con);
+            DBUtil.closePreparedStatement(statement);
+            pool.freeConnection(connection);
         }
     }
 
-    public void delete(Note note) throws Exception {
-        ConnectionPool cp = ConnectionPool.getInstance();
-        Connection con = cp.getConnection();
-        PreparedStatement ps = null;
-        String sql = "DELETE FROM note WHERE note_id=?";
+    public void delete(User user) throws Exception {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement statement = null;
+        String sql = "DELETE FROM user WHERE email=?";
         
         try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, note.getNoteId());
-            ps.executeUpdate();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getEmail());
+            statement.executeUpdate();
         } finally {
-            DBUtil.closePreparedStatement(ps);
-            cp.freeConnection(con);
+            DBUtil.closePreparedStatement(statement);
+            pool.freeConnection(connection);
         }
     }
 
