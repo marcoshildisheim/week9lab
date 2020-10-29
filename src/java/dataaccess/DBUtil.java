@@ -5,10 +5,32 @@
  */
 package dataaccess;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author 775653
  */
 public class DBUtil {
+    public static void closePreparedStatement(Statement ps){
+        try {
+            if(ps != null){
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     
+    public static void closeResultSet(ResultSet rs){
+        try {
+            if(rs != null){
+                rs.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 }
