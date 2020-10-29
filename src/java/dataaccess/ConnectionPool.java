@@ -5,6 +5,11 @@
  */
 package dataaccess;
 
+import java.sql.*;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 /**
  *
  * @author 775653
@@ -14,5 +19,43 @@ public class ConnectionPool {
     static ConnectionPool getInstance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    private static ConnectionPool pool = null;
+    private static DataSource dataSource = null;
+    
+    private ConnectionPool() {
+        try {
+            InitialContext ic = new InitialContext();
+            dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/userdb");
+        } catch (NamingException ex) {
+            System.out.println(ex);
+        } 
+    }
+    
+    public static synchronized ConnectionPool getInstance(){
+        if (pool == null){
+            pool = new ConnectionPool();
+        }
+        
+        return pool;
+    }
+    
+    public Connection getConnection(){
+        try {
+            return dataSource.getConnection();
+        } catch (SQLException ex) {
+           System.out.println(ex);
+           return null;
+        }
+    }
+    
+    public void freeConnection(Connection c){
+        try {
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
     
 }
