@@ -8,6 +8,7 @@ package dataaccess;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import models.User;
 
@@ -39,7 +40,8 @@ public class UserDB {
            User user = new User(email, active, firstName, lastName, password, role);
            users.add(user);
         }
-    } finally {
+    }
+        finally {
         DBUtil.closeResultSet(result);
         DBUtil.closePreparedStatement(statement);
         connectionPool.freeConnection(connection);

@@ -16,7 +16,7 @@ import models.Role;
  */
 public class RoleDB {
     
-    public ArrayList<Role> getAll(String id) throws Exception {
+    public ArrayList<Role> getAll() throws Exception {
         
     ArrayList<Role> roles = new ArrayList<>();
     ConnectionPool connectionPool = ConnectionPool.getInstance();
