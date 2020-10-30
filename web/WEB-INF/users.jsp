@@ -22,6 +22,10 @@
         
         
         <form method="post" action="user">
+
+    <div class="column">
+        <div class="col-30">
+        <form method="post" action="addUser">
             Email: <input type="text" name="addEmail"/><br>
             First Name: <input type="text" name="addFName"/><br>
             Last Name: <input type="text" name="addLName"/><br>
@@ -34,6 +38,9 @@
             <input type="submit" value="Add">
             <input type="hidden" name="action" value="add">
         </form>
+        </div>
+    </div>
+    </div>
         
         <h1>Manage Users</h1>
         <table>
