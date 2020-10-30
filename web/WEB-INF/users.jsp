@@ -20,9 +20,9 @@
             Last Name <input type="text" name="addLName"/><br>
             Password <input type="password" name="addPassword"/><br>
             Role <select name="addRole">
-                <option value="bedroom">System Admin</option>
-                <option value="garage">Regular User</option>
-                <option value="kitchen">Company Admin</option>
+                <option value="1">System Admin</option>
+                <option value="2">Regular User</option>
+                <option value="3">Company Admin</option>
             </select><br>
             <submit value="Add"/>
         </form>
