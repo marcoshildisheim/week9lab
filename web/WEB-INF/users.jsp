@@ -56,20 +56,20 @@
         <div class="col-30"> 
             <h1>Edit Users</h1>
         <form method="post" action="user">
-            Email <input type="text" name="editEmail"/><br>
-            First Name <input type="text" name="editFName"/><br>
-            Last Name <input type="text" name="editLName"/><br>
-            Password <input type="password" name="editPassword"/><br>
-            Role <select name="editRole">
+            Email: <input type="text" name="editEmail"/><br>
+            First Name: <input type="text" name="editFName"/><br>
+            Last Name: <input type="text" name="editLName"/><br>
+            Password: <input type="password" name="editPassword"/><br>
+            Role: <select name="editRole">
                 <option value="bedroom">System Admin</option>
                 <option value="garage">Regular User</option>
                 <option value="kitchen">Company Admin</option>
-            </select><br>
+            </select><br>        
             <input type="submit" value="Save">
             <input type="hidden" name="action" value="save">
             <input type="submit" value="Cancel">
             <input type="hidden" name="action" value="cancel">
-        </form>
+        </form> 
         </div>
     </div>
     </body>
