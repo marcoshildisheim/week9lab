@@ -11,11 +11,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="users.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif:300&display=swap" rel="stylesheet"> 
         
         <title>User editing</title>
     </head>
     <body>
+        <div id="top" class="header">
         <h1>Add Users</h1>
+        </div>
+        
+        
         <form method="post" action="addUser">
             Email: <input type="text" name="addEmail"/><br>
             First Name: <input type="text" name="addFName"/><br>
