@@ -50,6 +50,8 @@
          </c:forEach>
         </table>
         
+    <div class="column">
+        <div class="col-30">    
         <form method="post" action="user">
             Email <input type="text" name="editEmail"/><br>
             First Name <input type="text" name="editFName"/><br>
@@ -65,5 +67,7 @@
             <input type="submit" value="Cancel">
             <input type="hidden" name="action" value="cancel">
         </form>
+        </div>
+    </div>
     </body>
 </html>
