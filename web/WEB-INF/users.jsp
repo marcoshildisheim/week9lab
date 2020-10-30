@@ -20,7 +20,9 @@
         <h1>Add Users</h1>
         </div>
         
-        
+    <div class="row">
+    <div class="column">
+        <div class="col-30">
         <form method="post" action="addUser">
             Email: <input type="text" name="addEmail"/><br>
             First Name: <input type="text" name="addFName"/><br>
@@ -33,6 +35,9 @@
             </select><br>
             <submit value="Save"/><br>
         </form>
+        </div>
+    </div>
+    </div>
         
         <h1>Manage Users</h1>
         <table>
