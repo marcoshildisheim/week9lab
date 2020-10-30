@@ -21,17 +21,18 @@
         </div>
         
         
-        <form method="post" action="addUser">
+        <form method="post" action="user">
             Email: <input type="text" name="addEmail"/><br>
             First Name: <input type="text" name="addFName"/><br>
             Last Name: <input type="text" name="addLName"/><br>
             Password: <input type="password" name="addPassword"/><br>
             Role: <select name="addRole">
-                <option value="bedroom">System Admin</option>
-                <option value="garage">Regular User</option>
-                <option value="kitchen">Company Admin</option>
+                <option value="1">System Admin</option>
+                <option value="2">Regular User</option>
+                <option value="3">Company Admin</option>
             </select><br>
-            <submit value="Save"/><br>
+            <input type="submit" value="Add">
+            <input type="hidden" name="action" value="add">
         </form>
         
         <h1>Manage Users</h1>
@@ -46,7 +47,7 @@
          </c:forEach>
         </table>
         
-        <form method="post" action="EditUser">
+        <form method="post" action="user">
             Email <input type="text" name="editEmail"/><br>
             First Name <input type="text" name="editFName"/><br>
             Last Name <input type="text" name="editLName"/><br>
@@ -56,8 +57,10 @@
                 <option value="garage">Regular User</option>
                 <option value="kitchen">Company Admin</option>
             </select><br>
-            <submit value="Save"/><br>
-            <submit value="Cancel"/>
+            <input type="submit" value="Save">
+            <input type="hidden" name="action" value="save">
+            <input type="submit" value="Cancel">
+            <input type="hidden" name="action" value="cancel">
         </form>
     </body>
 </html>
