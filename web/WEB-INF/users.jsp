@@ -29,11 +29,12 @@
                 <option value="2">Regular User</option>
                 <option value="3">Company Admin</option>
             </select><br>
+        
             <input type="submit" value="Add">
             <input type="hidden" name="action" value="add">
-        </form>
-        </div>
+        </form>       
     </div>
+    </div> 
         
     <div class="column">
         <div class="col-30">
