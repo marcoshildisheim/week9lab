@@ -16,12 +16,9 @@
         <title>User editing</title>
     </head>
     <body>
-        <div id="top" class="header">
-        <h1>Add Users</h1>
-        </div>
-
     <div class="column">
         <div class="col-30">
+            <h1>Add Users</h1>
         <form method="post" action="user">
             Email: <input type="text" name="addEmail"/><br>
             First Name: <input type="text" name="addFName"/><br>
@@ -51,7 +48,8 @@
         </table>
         
     <div class="column">
-        <div class="col-30">    
+        <div class="col-30"> 
+            <h1>Manage Users</h1>
         <form method="post" action="user">
             Email <input type="text" name="editEmail"/><br>
             First Name <input type="text" name="editFName"/><br>
