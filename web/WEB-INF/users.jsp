@@ -15,10 +15,10 @@
     <body>
         <h1>Add Users</h1>
         <form method="post" action="addUser">
-            Email <input type="text" name="addEmail"/>
-            First Name <input type="text" name="addFName"/>
-            Last Name <input type="text" name="addLName"/>
-            Password <input type="password" name="addPassword"/>
+            Email <input type="text" name="addEmail"/><br>
+            First Name <input type="text" name="addFName"/><br>
+            Last Name <input type="text" name="addLName"/><br>
+            Password <input type="password" name="addPassword"/><br>
             Role <select name="addRole">
                 <option value="bedroom">System Admin</option>
                 <option value="garage">Regular User</option>
