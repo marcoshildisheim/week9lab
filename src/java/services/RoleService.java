@@ -15,9 +15,9 @@ import models.Role;
  */
 public class RoleService {
     
-    public List<Role> getAll(int roleNum) throws Exception {
+    public List<Role> getAll() throws Exception {
         RoleDB roleDB = new RoleDB();
-        List<Role> roles = roleDB.getAll(roleNum);
+        List<Role> roles = roleDB.getAll();
         return roles;
     }
     

@@ -45,7 +45,4 @@ public class RoleDB {
   
     }
 
-    public List<Role> getAll(int roleNum) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
