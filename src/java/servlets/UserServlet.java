@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import dataaccess.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.User;
 
 /**
  *
@@ -20,20 +22,14 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     
    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        UserDB userDB = new UserDB();
+        ArrayList<user> users = userDB.getAll();
+        request.setAttribute("users", users);
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
     }
 
@@ -41,6 +37,36 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String action = request.getParameter("action");
+        UserDB userDB = new UserDB();
+        
+        if (action.equals("add")) {
+            String email = request.getParameter("addEmail");
+            String fname = request.getParameter("addFName");
+            String lname = request.getParameter("addLName");
+            String pw = request.getParameter("addPassword");
+            int role = Integer.parseInt(request.getParameter("addRole"));
+            
+            User user = new User(email, 1, fname, lname, pw, role);
+            userDB.insert(user);
+            
+            getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
+        }
+        else if (action.equals("edit")) {
+            String editEmail = request.getParameter("edit");
+            
+            
+        }
+        else if (action.equals("delete")) {
+            
+        }
+        else if (action.equals("save")) {
+            
+        }
+        else if (action.equals("cancel")) {
+            
+        }
         
     }
 
