@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import models.Role;
 /**
  *
@@ -43,5 +44,9 @@ public class RoleDB {
     
     return roles;
   
+    }
+
+    public List<Role> getAll(int roleNum) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
