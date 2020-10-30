@@ -15,8 +15,8 @@ public class User implements Serializable {
     
     private String email;
     private int active;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String password;
     private int role;
     
@@ -27,8 +27,8 @@ public class User implements Serializable {
     public User(String email, int active, String firstName, String lastName, String password, int role) {
         this.email = email;
         this.active = active;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.password = password;
         this.role = role;
     }
@@ -50,19 +50,19 @@ public class User implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.firstname = lastName;
     }
 
     public String getPassword() {
