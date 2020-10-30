@@ -9,8 +9,6 @@ import dataaccess.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,15 +29,8 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         
         UserDB userDB = new UserDB();
-        
-        ArrayList<User> users;
-        try {
-            users = userDB.getAll();
-            request.setAttribute("users", users);
-        } catch (Exception ex) {
-            Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        ArrayList<User> users = userDB.getAll();
+        request.setAttribute("users", users);
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
     }
 
@@ -59,11 +50,7 @@ public class UserServlet extends HttpServlet {
             int role = Integer.parseInt(request.getParameter("addRole"));
             
             User user = new User(email, 1, fname, lname, pw, role);
-            try {
-                userDB.insert(user);
-            } catch (Exception ex) {
-                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            userDB.insert(user);
             
             getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
         }
