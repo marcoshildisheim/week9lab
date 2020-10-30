@@ -35,6 +35,8 @@
         </div>
     </div>
         
+    <div class="column">
+        <div class="col-30">
         <h1>Manage Users</h1>
         <table>
          <c:forEach var="user" items="${users}">
@@ -46,6 +48,8 @@
             </tr>
          </c:forEach>
         </table>
+        </div>
+    </div>
         
     <div class="column">
         <div class="col-30"> 
