@@ -17,18 +17,17 @@ import models.User;
  */
 public class UserDB {
     
-    public ArrayList<User> getAll(String intakeEmail) throws Exception {
+    public ArrayList<User> getAll() throws Exception {
         
     ArrayList<User> users = new ArrayList<>();
     ConnectionPool connectionPool = ConnectionPool.getInstance();
     Connection connection = connectionPool.getConnection();
     PreparedStatement statement = null;
     ResultSet result = null;
-    String sql = "SELECT * FROM user WHERE email=?";
+    String sql = "SELECT * FROM user";
     
     try {
         statement = connection.prepareStatement(sql);
-        statement.setString(1, intakeEmail);
         result = statement.executeQuery();
         while(result.next()){
            String email = result.getString(1);

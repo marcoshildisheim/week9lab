@@ -8,6 +8,7 @@ package servlets;
 import dataaccess.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         
         UserDB userDB = new UserDB();
-        ArrayList<user> users = userDB.getAll();
+        ArrayList<User> users = userDB.getAll();
         request.setAttribute("users", users);
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
     }

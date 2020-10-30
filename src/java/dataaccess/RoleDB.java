@@ -24,11 +24,10 @@ public class RoleDB {
     Connection connection = connectionPool.getConnection();
     PreparedStatement statement = null;
     ResultSet result = null;
-    String sql = "SELECT * FROM user WHERE role_id=?";
+    String sql = "SELECT * FROM user";
     
     try {
         statement = connection.prepareStatement(sql);
-        statement.setString(1, id);
         result = statement.executeQuery();
         while(result.next()){
            int roleID = result.getInt(1);
