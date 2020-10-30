@@ -37,23 +37,23 @@
         
     <div class="column">
         <div class="col-30">
-        <h1>Manage Users</h1>
-        <table>
-         <c:forEach var="user" items="${users}">
-            <tr>
-                <td>${user.email}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.role}</td>
-            </tr>
-         </c:forEach>
-        </table>
+            <h1>Manage Users</h1>
+                <table>
+                <c:forEach var="user" items="${users}">
+                <tr>
+                    <td>${user.email}</td>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.role}</td>
+                </tr>
+                </c:forEach>
+                </table>
         </div>
     </div>
         
     <div class="column">
         <div class="col-30"> 
-            <h1>Manage Users</h1>
+            <h1>Edit Users</h1>
         <form method="post" action="user">
             Email <input type="text" name="editEmail"/><br>
             First Name <input type="text" name="editFName"/><br>
