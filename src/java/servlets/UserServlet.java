@@ -62,8 +62,8 @@ public class UserServlet extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
+            response.sendRedirect("user");
+            //getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
         }
         else if (action.equals("edit")) {
             String editEmail = request.getParameter("edit");
@@ -72,11 +72,31 @@ public class UserServlet extends HttpServlet {
         }
         else if (action.equals("delete")) {
             
+            //userDB.delete(user);
         }
         else if (action.equals("save")) {
+            String email = request.getParameter("editEmail");
+            String fname = request.getParameter("editFName");
+            String lname = request.getParameter("editLName");
+            String pw = request.getParameter("editPassword");
+            int role = Integer.parseInt(request.getParameter("editRole"));
             
+            User user = new User(email, 1, fname, lname, pw, role);
+            try {
+                userDB.update(user);
+            } catch (Exception ex) {
+                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            response.sendRedirect("user");
         }
         else if (action.equals("cancel")) {
+            request.setAttribute("editEmail", "");
+            request.setAttribute("editFName", "");
+            request.setAttribute("editLName", "");
+            request.setAttribute("editPassword", "");
+            request.setAttribute("editPassword", "");
+            
+            response.sendRedirect("user");
             
         }
         
