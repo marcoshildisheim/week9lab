@@ -108,5 +108,35 @@ public class UserDB {
             pool.freeConnection(connection);
         }
     }
-
+    
+    public User get(String email) throws Exception {
+        User user = null;
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = connectionPool.getConnection();
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        String sql = "SELECT * FROM user WHERE email=?";
+        
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            result = statement.executeQuery();
+            if (result.next()) {
+                String Email = email;
+                int active = result.getInt(2);
+                String firstName = result.getString(3);
+                String lastName = result.getString(4);
+                String password = result.getString(5);
+                int role = result.getInt(6);
+                user = new User(Email, active, firstName, lastName, password, role);
+                
+            }
+        } finally {
+            DBUtil.closeResultSet(result);
+            DBUtil.closePreparedStatement(statement);
+            connectionPool.freeConnection(connection);
+        }
+        
+        return user;
+    }
 }
