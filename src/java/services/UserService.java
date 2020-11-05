@@ -9,8 +9,7 @@ import models.User;
  * @author 813033
  */
 public class UserService 
-{
-    
+{   
     public List<User> getAll() throws Exception 
     {
         UserDB userDB = new UserDB();

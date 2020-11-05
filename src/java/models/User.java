@@ -145,7 +145,7 @@ public class User implements Serializable
         {
             return false;
         }
-        Role other = (Role) object;
+        User other = (User) object;
         
         if((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email)))
         {
