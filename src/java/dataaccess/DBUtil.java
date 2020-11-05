@@ -10,7 +10,7 @@ public class DBUtil
 {
     public static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("UsersPU");
     
-    public static EntityManagerFactory egtEmFactory()
+    public static EntityManagerFactory getEmFactory()
     {
         return emf;
     }

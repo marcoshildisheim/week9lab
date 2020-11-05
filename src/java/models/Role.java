@@ -1,46 +1,104 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 
 /**
  *
  * @author 775653
  * 
  */
-public class Role implements Serializable  {
-    private int roleNum;
-    private String roleDesc;
+@Entity
+@Table(name="role")
+@XmlRootElement
+@NamedQueries
+    ({
+      @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
+      @NamedQuery(name = "Role.findByRoleId", query = "SELECT r FROM Role r WHERE r.roleId =: roleId"),
+      @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName =: roleName")
+    })
 
-    public Role() {
+public class Role implements Serializable  
+{
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "role_id")
+    private Integer roleId;
+    
+    @Basic(optional = false)
+    @Column(name = "role_name")
+    private String roleName;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "role", fetch = FetchType.EAGER)
+    
+    private List<User> userList; 
+
+    public Role() 
+    {
         
     }
 
-    public Role(int roleNum, String roleDesc) {
-        this.roleNum = roleNum;
-        this.roleDesc = roleDesc;
+    public Integer getRoleId() 
+    {
+        return roleId;
     }
 
-    public int getRoleNum() {
-        return roleNum;
+    public void setRoleId(Integer roleId) 
+    {
+        this.roleId = roleId;
     }
 
-    public void setRoleNum(int roleNum) {
-        this.roleNum = roleNum;
+    public String getRoleName() 
+    {
+        return roleName;
     }
 
-    public String getRoleDesc() {
-        return roleDesc;
+    public void setRoleName(String roleName) 
+    {
+        this.roleName = roleName;
     }
 
-    public void setRoleDesc(String roleDesc) {
-        this.roleDesc = roleDesc;
+    @XmlTransient
+    public List<User> getUserList() 
+    {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) 
+    {
+        this.userList = userList;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 0;
+        hash += (roleId != null ? roleId.hashCode() : 0);
+        return hash;        
     }
     
+    @Override
+    public boolean equals(Object object)
+    {
+        if(!(object instanceof Role))
+        {
+            return false;
+        }
+        Role other = (Role) object;
+        
+        if((this.roleId == null && other.roleId != null) || (this.roleId != null && !this.roleId.equals(other.roleId)))
+        {
+            return false;
+        }
+        return true;
+    }
     
-    
+    @Override 
+    public String toString()
+    {
+        return "models.Role[ roleId=" + roleId + " ]";
+    }
 }
