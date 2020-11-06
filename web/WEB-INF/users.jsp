@@ -26,10 +26,10 @@
             Last Name: <input type="text" name="addLName"/><br>
             Password: <input type="password" name="addPassword"/><br>
             Role: <select name="addRole">
-                <option value="1">System Admin</option>
-                <option value="2">Regular User</option>
-                <option value="3">Company Admin</option>
-            </select><br>
+                    <option value="1">System Admin</option>
+                    <option value="2">Regular User</option>
+                    <option value="3">Company Admin</option>
+                  </select><br>
         
             <input type="submit" value="Add">
             <input type="hidden" name="action" value="add">
@@ -74,9 +74,9 @@
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>
                         
-                        <c:if test="${user.role eq 1}"><td>System Admin</td></c:if>
-                        <c:if test="${user.role eq 2}"><td>Regular User</td></c:if>
-                        <c:if test="${user.role eq 3}"><td>Company Admin</td></c:if>
+                        <c:if test="${user.role.roleId eq 1}"><td>System Admin</td></c:if>
+                        <c:if test="${user.role.roleId eq 2}"><td>Regular User</td></c:if>
+                        <c:if test="${user.role.roleId eq 3}"><td>Company Admin</td></c:if>
                         
                     <form method="post" action="user">
                         <input type="hidden" name="email_e" value="${user.email}">

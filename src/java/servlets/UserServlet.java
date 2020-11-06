@@ -26,16 +26,17 @@ public class UserServlet extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
-        
-        ArrayList<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<>();
         UserService us = new UserService();
         
         try 
         {
-            if(users != null) 
+            if(users != null)
             {
                 users = null;
-            }             
+            }
+            users = us.getAll();
+            request.setAttribute("users", users);
         } 
         catch (Exception ex) 
         {
@@ -44,7 +45,6 @@ public class UserServlet extends HttpServlet
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request,response);
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 

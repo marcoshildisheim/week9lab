@@ -16,8 +16,8 @@ import javax.xml.bind.annotation.*;
 @NamedQueries
     ({
       @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
-      @NamedQuery(name = "Role.findByRoleId", query = "SELECT r FROM Role r WHERE r.roleId =: roleId"),
-      @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName =: roleName")
+      @NamedQuery(name = "Role.findByRoleId", query = "SELECT r FROM Role r WHERE r.roleId = :roleId"),
+      @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName = :roleName")
     })
 
 public class Role implements Serializable  
@@ -39,6 +39,17 @@ public class Role implements Serializable
     public Role() 
     {
         
+    }
+    
+    public Role(Integer roleId)
+    {
+        this.roleId = roleId;
+    }
+    
+    public Role(Integer roleId, String roleName)
+    {
+        this.roleId = roleId;
+        this.roleName = roleName;
     }
 
     public Integer getRoleId() 

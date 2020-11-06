@@ -15,11 +15,11 @@ import javax.xml.bind.annotation.*;
 @NamedQueries
     ({
       @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-      @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email =: email"),
-      @NamedQuery(name = "User.findByActive", query = "SELECT u FROM User u WHERE u.active =: active"),
-      @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName =: firstName"),
-      @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName =: lastName"),
-      @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password =: password")            
+      @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
+      @NamedQuery(name = "User.findByActive", query = "SELECT u FROM User u WHERE u.active = :active"),
+      @NamedQuery(name = "User.findByFirstName", query = "SELECT u FROM User u WHERE u.firstName = :firstName"),
+      @NamedQuery(name = "User.findByLastName", query = "SELECT u FROM User u WHERE u.lastName = :lastName"),
+      @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")            
     })
 
 public class User implements Serializable 
@@ -141,7 +141,7 @@ public class User implements Serializable
     @Override
     public boolean equals(Object object)
     {
-        if(!(object instanceof Role))
+        if(!(object instanceof User))
         {
             return false;
         }
